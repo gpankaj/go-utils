@@ -8,6 +8,16 @@ type RestErr struct {
 	Causes []interface{}
 }
 
+
+func NewRestError(message string, status int, causes []interface{}) *RestErr {
+	return &RestErr{
+		Message: message,
+		Code:  status,
+		Error:   nil,
+		Causes:  causes,
+	}
+}
+
 func NewBadRequestError(message string)(*RestErr) {
 	return &RestErr{
 		Message: message,
