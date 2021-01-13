@@ -13,7 +13,7 @@ func NewRestError(message string, status int, causes []interface{}) *RestErr {
 	return &RestErr{
 		Message: message,
 		Code:  status,
-		Error:   nil,
+		Error:   "",
 		Causes:  causes,
 	}
 }
@@ -26,6 +26,13 @@ func NewBadRequestError(message string)(*RestErr) {
 	}
 }
 
+func NewUnauthorizedError(message string)(*RestErr) {
+	return &RestErr{
+		Message: message,
+		Code: http.StatusBadRequest,
+		Error: "NewUnauthorizedError",
+	}
+}
 
 func NewNotFoundError(message string)(*RestErr) {
 	return &RestErr{
